@@ -17,6 +17,7 @@ const urlSchema = new mongoose.Schema({
 
 
 const URL = mongoose.model('url', urlSchema)
+//URL is a Mongoose model created using the urlSchema. The 'url' parameter specifies the name of the MongoDB collection, which Mongoose will automatically convert to lowercase and pluralize (as urls). This model allows us to perform CRUD operations on the urls collection in the database.
 
 module.exports =  URL
 

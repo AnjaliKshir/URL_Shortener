@@ -7,8 +7,8 @@ const router = express.Router()
 
 router.post("/", generateNewShortURL)
 
-router.get("/:shortID", redirectToOriginalURL)
+router.get("/:shortId", redirectToOriginalURL)
 
-router.get("/analytics/:shortID", getAnalytics)
+router.get("/analytics/:shortId", getAnalytics)
 
 module.exports = router

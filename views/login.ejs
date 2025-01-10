@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <h1>Login🤨</h1>
+    <form id="loginForm">
+        <label>Email: </label>
+        <input type="email" required name="email" id="email">
+        <br>
+        <label>Password: </label>
+        <input type="password" required name="password" id="password">
+        <br>
+        <button type="submit">Login</button>
+    </form>
+
+    <script>
+        // Listen for form submission
+        document.getElementById('loginForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent the default form submission
+            
+            // Get form data
+            const formData = {
+                email: document.getElementById('email').value,
+                password: document.getElementById('password').value
+            };
+
+            // Send data via Axios POST request
+            axios.post('/user/login', formData)
+            .then(response => {
+        // Insert the received HTML into the body or a specific element
+        document.open();
+        document.write(response.data);
+        document.close();
+    })
+    .catch(error => {
+        console.error('There was an error signing up!', error);
+    });
+
+        });
+    </script>
+</body>
+</html>

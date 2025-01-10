@@ -3,7 +3,7 @@ const {nanoid} = require('nanoid')
 const URL = require("../models/url")
 
 async function generateNewShortURL(req, res)
-{
+{ 
     try{
     const {url} = req.body
     if(!url) return res.status(400).json({error: 'url is required!'})
@@ -11,15 +11,17 @@ async function generateNewShortURL(req, res)
     // const shortID = shortid() //returns a string
     const shortID = nanoid(8)
     console.log(shortID)
-    console.log(typeof(shortID))
+    
     await URL.create({
         shortId: shortID,
         redirectURL: url,
         visitHistory: [],
     })
     
+    return res.render("home", {
+        id: shortID,
+    })
 
-    return res.json({ id: shortID })
     } catch(e){
         console.log("Error: ",e)
         return res.json({error: e})
@@ -28,10 +30,10 @@ async function generateNewShortURL(req, res)
 
 async function redirectToOriginalURL(req,res)
 {
-    const shortID = req.params.shortID
+    const shortId = req.params.shortId
     const entry = await URL.findOneAndUpdate(
         {//find
-            shortID,
+            shortId,
         },
         {//update the visitHistory by appending the timestamp to the array
             $push: {
