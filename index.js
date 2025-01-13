@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const path = require("path") //in built module required for viewing the loc of ejs files
 
+
 const express = require('express')
 const app = express()
 
@@ -9,7 +10,10 @@ const {connectToMongoDB} = require('./connection')
 
 const urlRoute = require('./routes/url')
 const staticRoute = require("./routes/staticRouter")
-const userRoute = require('./routes/user')
+const userRoute = require('./routes/user');
+const cookieParser = require('cookie-parser');
+const {restrictToLoggedinUserOnly, checkAuth} = require("./middlewares/auth")
+
 
 const PORT = 8000
 
@@ -25,9 +29,11 @@ app.set("views", path.resolve("./views")) // this tells the path of where the .e
 app.use(express.json())
 //middleware to support form data
 app.use(express.urlencoded({extended: true}))
+app.use(cookieParser())
 
-app.use("/url", urlRoute)
-app.use("/", staticRoute)
+
+app.use("/url", restrictToLoggedinUserOnly, urlRoute)
+app.use("/", checkAuth, staticRoute)
 app.use("/user", userRoute)
 
 app.listen(PORT, () => console.log(`Server started at PORT: ${PORT}`))

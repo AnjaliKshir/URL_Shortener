@@ -10,9 +10,13 @@ const urlSchema = new mongoose.Schema({
     redirectURL: {
         type: String, 
         required: true,
-    },
+    }, 
     //array of objects to keep track of user clicks
     visitHistory: [{timestamp :{type: Number,}}],
+    createdBy:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref:"users",
+    }
 }, {timestamps: true})
 
 

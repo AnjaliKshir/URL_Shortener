@@ -9,19 +9,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
-<body>
-    <h1>Login🤨</h1>
-    <form id="loginForm">
-        <label>Email: </label>
-        <input type="email" required name="email" id="email">
-        <br>
-        <label>Password: </label>
-        <input type="password" required name="password" id="password">
-        <br>
-        <button type="submit">Login</button>
-    </form>
+<body class="bg-blue-50 text-gray-800 font-sans min-h-screen flex justify-center items-center">
+    <div class="w-full max-w-md bg-white p-6 rounded-md shadow-lg">
+        <h1 class="text-3xl font-bold text-blue-500 text-center mb-6">Login🔪</h1>
+        <form id="loginForm" class="flex flex-col gap-4">
+            <label class="block text-sm font-medium text-gray-600">Email: </label>
+            <input type="email" required name="email" id="email" class="border border-gray-300 rounded-md w-full p-2 mt-1 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            <br>
+            <label class="block text-sm font-medium text-gray-600">Password: </label>
+            <input type="password" required name="password" id="password" class="border border-gray-300 rounded-md w-full p-2 mt-1 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            <br>
+            <button type="submit" class="bg-blue-400 text-white font-semibold px-4 py-2 rounded-md hover:bg-blue-500">Login</button>
+        </form>
+    </div>
+    
 
     <script>
         // Listen for form submission

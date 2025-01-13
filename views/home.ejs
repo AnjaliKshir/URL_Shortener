@@ -8,40 +8,48 @@
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>URL Shortener</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <h1>URL Shortener😼</h1>
+<body class="bg-purple-100 text-gray-800 font-sans min-h-screen flex flex-col items-center">
+
+    <header class="text-center py-8">
+        <h1 class="text-4xl font-bold text-indigo-500 mb-4">URL Shortener🐻‍❄️</h1>
+    </header>
 
     <!-- as the data coming form the backend is stored in locals -->
     <% if (locals.id) { %>
-     <p>URL Generated: http://localhost:8000/url/<%= id %></p>
+     <p class="text-lg text-green-600 mb-4">URL Generated:
+        <a href="http://localhost:8000/url/<%= id %>" class="text-blue-500 underline">
+        http://localhost:8000/url/<%= id %>
+        </a>
+     </p>
     <% } %>
 
-    <div>
+    <div class="mb-8" class="flex flex-col gap-4 bg-blue-100 p-6 rounded-md shadow-lg">
         <form method="post" action="/url">
-            <label>Enter your original URL 👀</label>
-            <input type="text" name="url" placeholder="https://example.com">
-            <button type="submit">Generate</button>
+            <label class="text-lg text-gray-700">Enter your original URL 👀</label>
+            <input type="text" name="url" placeholder="https://example.com" class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            <button type="submit" class="bg-pink-400 text-white font-semibold px-4 py-2 rounded-md hover:bg-pink-500">Generate</button>
         </form>
     </div>
 
     <div>
         <% if (locals.urls) { %>
-         <table>
-            <thead>
-                <th>S. No.</th>
-                <th>ShortID</th>
-                <th>Redirect</th>
-                <th>Clicks</th>
+         <table class="border-collapse w-full max-w-4xl bg-white rounded-md shadow-lg">
+            <thead class="bg-blue-100 text-blue-800">
+                <th class="px-4 py-2">S. No.</th>
+                <th class="px-4 py-2">ShortID</th>
+                <th class="px-4 py-2">Redirect</th>
+                <th class="px-4 py-2">Clicks</th>
             </thead>
             <tbody>
                 <% urls.forEach((url, index) => { %>
-                <tr>
-                 <td><%= index + 1 %></td>
-                 <td><%= url.shortId %></td>
-                 <td><%= url.redirectURL %></td>
-                 <td><%= url.visitHistory.length %></td>
+                <tr class="text-gray-600 hover:bg-blue-50">
+                 <td class="px-4 py-2 text-center"><%= index + 1 %></td>
+                 <td class="px-4 py-2 text-center"><%= url.shortId %></td>
+                 <td class="px-4 py-2 text-center"><%= url.redirectURL %></td>
+                 <td class="px-4 py-2 text-center"><%= url.visitHistory.length %></td>
                 </tr>
                 <% }) %>
             </tbody>
