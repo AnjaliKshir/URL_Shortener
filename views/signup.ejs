@@ -9,7 +9,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signup</title>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-orange-100 text-gray-800 font-sans min-h-screen flex justify-center items-center">
@@ -29,32 +28,5 @@
         </form>
     </div>
     
-
-    <!-- <script>
-        // Listen for form submission
-        document.getElementById('signupForm').addEventListener('submit', function (event) {
-            event.preventDefault(); // Prevent the default form submission
-            
-            // Get form data
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                password: document.getElementById('password').value
-            };
- 
-            // Send data via Axios POST request
-            axios.post('/user/signup', formData)
-            .then(response => {
-        // Insert the received HTML into the body or a specific element
-        document.open();
-        document.write(response.data);
-        document.close();
-    })
-    .catch(error => {
-        console.error('There was an error signing up!', error);
-    });
-
-        });
-    </script> -->
 </body>
 </html>

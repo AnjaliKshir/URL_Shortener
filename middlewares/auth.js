@@ -21,9 +21,9 @@ async function checkAuth(req, res, next)
     const userUid = req.cookies.uid;
 
     const user = getUser(userUid);
-
-    //if the user is valid then we store the authenticated user's information in the request object 
-    req.user = user;
+    
+    if(user) req.user = user;
+    
     next();
 }
 
